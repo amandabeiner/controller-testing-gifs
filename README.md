@@ -1,21 +1,42 @@
-# README
+# Controller Testing Gifs
 
-This repository has all the code necessary for starting a React on Rails application
-including testing. To get started, just clone the repository down and get started using
-React on Rails like you normally would.
+A React on Rails project, created as part of a code-along lesson for the Launch Academy Rails curriculum. Students are encouraged to start thinking about how to thoroughly test applications that use a Rails back end and a React front end. Using Rspec to tests to test API endpoints, and then using Enzyme tests to test the React front end functionality, is the way we achieve this.
 
-## Areas in the Boilerplate to Update
-Be sure to search `boilerplate` within your project and update any references to
-boilerplate with the name of your application. If you do not follow this step, your
-application may not behave the way that you expect it to.
+The app has a simple index page that displays all of the gifs in the database, and a React form where a user can submit a new gif with a name and a url. 
 
-## Ideas for Getting Started
-Potential places to start for a side project:
-* Find an API that interests you and display the information in an interesting way
-* Make a clone of a website that already exists
-* Make a game that users can play on a website
-* Extend an assignment that you've already done to add additional features
+Students should test that the `GET#index` method:
+* Returns the status 200
+* Returns the type `application/json`
+* Returns the number of items we expect
+* Returns the expected JSON output
 
-No idea is too small, weird or insignificant to get started with. If you're interested
-in the project, you'll keep working on it and learn a lot about coding. Download the
-boilerplate, make those first commits and enjoy!
+Students should test that the `POST#create` method:
+* Creates a new instance of the `Gif` class.
+* Returns the status 200
+* Returns the content type `application/json`
+* Returns a Hash of one object, not an array of many objects
+* Returns the json we expect for the gif we posted.
+
+## Setup
+To get set up, run the following:
+
+```no-highlight
+  bundle
+  rake db:create
+  rake db:migrate
+  rake db:seed
+```
+
+In a separate terminal tab, run:
+
+```
+  yarn
+  yarn start
+```
+
+Then navigate to `localhost:3000`.
+
+## Testing
+You can run the controller tests by running `rspec`. Feel free to add model tests in `spec/models` to test the `Gif` class!
+
+React/Jasmine/Enzyme testing is all set up! Run `yarn test` to run the example tests, or add tests to the `react/test` directory.
